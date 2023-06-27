@@ -1,33 +1,26 @@
-INSERT INTO department (name)
-VALUES ("Marketing"),
-       ("Sales"),
-       ("Accounting"),
-       ("Human Resources");
+INSERT INTO department(name)
+    VALUES  ("Engineering"),
+            ("Finance"),
+            ("Legal"),
+            ("Sales");
 
-INSERT INTO role (title, salary, department_id)
-       ("Marketing Manager", 100000, 1),
-       ("Marketing Coordinator", 70000, 1),
-       ("Marketing Intern", 35000, 1);
-VALUES ("Sales Manager", 150000, 2),
-       ("Sales Rep", 90000, 2),
-       ("Sales Intern", 40000, 2),
-       ("Accounting Manager", 115000, 3),
-       ("Accounting Rep", 95000, 3),
-       ("Accounting Intern" 55000, 3),
-       ("HR Manager", 80000, 3),
-       ("HR Rep", 58000, 3),
-       ("HR Intern", 38000, 3),
+INSERT INTO roles(title, salary, department_id)
+    VALUES  ("Sales Lead", 80000, 4),
+            ("Salesperson", 60000, 4),
+            ("Lead Engineer", 120000, 1),
+            ("Account Manager", 75000, 2),
+            ("Accountant", 140000, 3),
+            ("Legal Team Lead", 200000, 3),
+            ("Lawyer", 180000, 3);
 
-INSERT INTO employee (first_name, last_name, role_id, manager_id)
-VALUES ("Angelica ", "Duarte", 1, NULL),
-       ("Armando", "Nava", 2, 1),
-       ("Jorge", "Jimenez", 3, 1),
-       ("Izick", "Jimenez", 4, NULL),
-       ("Gloria", "Andrade", 5, 4),
-       ("Briyana", "Jimenez", 6, 4),
-       ("David", "Andrade", 7, NULL),
-       ("Amber ", "Cruz", 8, 7),
-       ("George", "Jimenez", 9, 7),
-       ("Robert", "Guerra", 10, NULL),
-       ("Alberto", "Negrete", 11, 10),
-       ("Julissa", "Esparza", 12, 10);
+INSERT INTO employees(first_name, last_name, role_id, manager_id)
+    VALUES  ("Angelica", "Duarte", 1, NULL),
+            ("Armando", "Nava", 2, 1),
+            ("Jorge", "Jimenez", 2, 1),
+            ("Izick", "Jimenez", 3, NULL),
+            ("Gloria", "Andrade", 4, NULL),
+            ("Briyana", "Jimenez", 5, 5),
+            ("David", "Andrade", 5, 5),
+            ("George", "Jimenez", 6, NULL),
+            ("Amber", "Cruz", 7, 8),
+            ("Brian", "Duarte", 7, 8);
