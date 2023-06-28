@@ -1,4 +1,12 @@
-# 12 SQL: Employee Tracker
+# Employee Tracker
+
+## **_Table of contents_**
+* [User Story](#user-story)
+* [Acceptance Criteria](#acceptance-criteria)
+* [Video Submission](#video-submission)
+* [Dependencies](#dependencies)
+* [Installation](#installation)
+* [Links](#links)
 
 ## User Story
 
@@ -36,5 +44,29 @@ THEN I am prompted to select an employee to update and their new role and this i
 
 ## Dependencies
 
-You’ll need to use the [MySQL2 package](https://www.npmjs.com/package/mysql2) to connect to your MySQL database and perform queries, the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4) to interact with the user via the command line, and the [console.table package](https://www.npmjs.com/package/console.table) to print MySQL rows to the console. Use npm install to install required packages.
+You’ll need to use the [MySQL2 package](https://www.npmjs.com/package/mysql2) to connect to your MySQL database and perform queries, the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4) to interact with the user via the command line, and the [console.table package](https://www.npmjs.com/package/console.table) to print MySQL rows to the console. Use npm install to install required packages. 
+
+## Installation
+
+Make sure to have mysql server downloaded and running.
+
+Since Node.js applications don't have a front end, clone or download the repository to your own local machine and run it from your command line.
+
+Then, make sure that your repo includes a package.json with the required dependencies. You can create one by running npm init in your command line.
+
+Run npm i or npm install in order to download all the dependencies.
+
+Here are the MySQL instructions to create your tables:
+
+Enter mysql -u root -p in the CLI to enter mysql.
+Enter your mysql password (it is the same as the one in the db/connection.js file).
+Tell your database to use your seeds and schema files by entering source db/seeds.sql; and enter, then type source db/schema.sql; and enter.
+Exit MySQL by entering quit;.
+You are done!
+Run node index.js in your terminal to launch the application.
+
+## Links
+
+https://github.com/EgRoku/Employee-Tracker
+
 
