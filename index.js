@@ -95,7 +95,7 @@ const addDept = () => {
                     VALUES(?)`, ans.addDept, (err, result) => {
                 if (err) {
                     console.log(err);
-                    console.table(result);
+                    //console.table(result);
                 } else {
                     db.query(`SELECT * FROM department`, (err, result) => {
                         err ? console.error(err) : console.table(result);
@@ -164,7 +164,7 @@ const addEmployee = () => {
                     VALUES(?, ?)`, [ans.firstName, ans.lastName], (err, result) => {
                 if (err) {
                     console.log(err);
-                    console.table(result);
+                    //console.table(result);
                 } else {
                     db.query(`SELECT * FROM employees`, (err, result) => {
                         err ? console.error(err) : console.table(result);
@@ -192,8 +192,8 @@ const updateEmployee = () => {
             db.query(`UPDATE employee SET roleTitle = ? WHERE firstName = ?`, [ans.firstNname, ans.roleTitle], (err, result) => {
                 if (err) {
                     console.log(err);
-                    console.table(result);
-                    init();
+                    //console.table(result);
+                    //init();
                 } else {
                     db.query(`SELECT * FROM employees`, (err, result) => {
                         err ? console.error(err) : console.table(result);
