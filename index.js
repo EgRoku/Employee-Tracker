@@ -1,3 +1,4 @@
+
 const cTable = require('console.table');
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
@@ -6,9 +7,9 @@ const inquirer = require('inquirer');
 const db = mysql.createConnection(
     {
         host: 'localhost',
-        // YOUR MySQL USERNAME HERE
+        // MySQL username,
         user: 'root',
-        // YOUR MySQL PASSWORD HERE
+        // MySQL password
         password: 'glorious',
         database: 'employee_tracker_db'
     },
@@ -51,7 +52,7 @@ const init = () => {
                 case "Update an employee role": updateEmployee();
                     break;
                 case "I'm finished":
-                    console.log("Thank you!");
+                    console.log("Thank you very much!");
                     process.exit();
             }
         }).catch(err => console.error(err));
@@ -61,23 +62,22 @@ init();
 
 const viewDept = () => {
     // console.log("Working")
-    db.query(`SELECT * FROM department`, (err, result) => {
-        err ? console.error(err) : console.table(result);
+    db.query(`SELECT * FROM department`, (err, results) => {
+        err ? console.error(err) : console.table(results);
         init();
-        console.table(result);
     })
 };
 
 const viewRoles = () => {
-    db.query(`SELECT * FROM roles`, (err, result) => {
-        err ? console.error(err) : console.table(result);
+    db.query(`SELECT * FROM roles`, (err, results) => {
+        err ? console.error(err) : console.table(results);
         init();
     })
 };
 
 const viewEmployees = () => {
-    db.query(`SELECT * FROM employees`, (err, result) => {
-        err ? console.error(err) : console.table(result);
+    db.query(`SELECT * FROM employees`, (err, results) => {
+        err ? console.error(err) : console.table(results);
         init();
     })
 }
@@ -92,13 +92,12 @@ const addDept = () => {
             }
         ]).then(ans => {
             db.query(`INSERT INTO department(name)
-                    VALUES(?)`, ans.addDept, (err, result) => {
+                    VALUES(?)`, ans.addDept, (err, results) => {
                 if (err) {
-                    console.log(err);
-                    //console.table(result);
+                    console.log(err)
                 } else {
-                    db.query(`SELECT * FROM department`, (err, result) => {
-                        err ? console.error(err) : console.table(result);
+                    db.query(`SELECT * FROM department`, (err, results) => {
+                        err ? console.error(err) : console.table(results);
                         init();
                     })
                 }
@@ -147,6 +146,11 @@ const addRole = () => {
 };
 
 const addEmployee = () => {
+    // const rollChoices = () => db.promise().query(`SELECT * FROM roles`)
+    // .then((rows) => {
+    //     let arrNames = rows[0].map(obj => obj.name);
+    //     return arrNames
+    // })
     inquirer
         .prompt([
             {
@@ -159,15 +163,20 @@ const addEmployee = () => {
                 message: "What is the employee's last name?",
                 name: "lastName"
             },
+            // {
+            //     type: "list",
+            //     message: "What is the employee's role?",
+            //     name: "employeeRole",
+            //     choices: rollChoices
+            // }
         ]).then(ans => {
             db.query(`INSERT INTO employees(first_name, last_name)
-                    VALUES(?, ?)`, [ans.firstName, ans.lastName], (err, result) => {
+                    VALUES(?, ?)`, [ans.firstName, ans.lastName], (err, results) => {
                 if (err) {
-                    console.log(err);
-                    //console.table(result);
+                    console.log(err)
                 } else {
-                    db.query(`SELECT * FROM employees`, (err, result) => {
-                        err ? console.error(err) : console.table(result);
+                    db.query(`SELECT * FROM employees`, (err, results) => {
+                        err ? console.error(err) : console.table(results);
                         init();
                     })
                 }
@@ -189,14 +198,14 @@ const updateEmployee = () => {
                 message: "Please enter the new role number id associated with the employee you want to update in the database. Enter ONLY numbers."
             },
         ]).then(ans => {
-            db.query(`UPDATE employee SET roleTitle = ? WHERE firstName = ?`, [ans.firstNname, ans.roleTitle], (err, result) => {
+            db.query(`UPDATE employee SET roleTitle = ? WHERE firstName = ?`, [ans.firstNname, ans.roleTitle], (err, results) => {
                 if (err) {
                     console.log(err);
                     //console.table(result);
                     //init();
                 } else {
-                    db.query(`SELECT * FROM employees`, (err, result) => {
-                        err ? console.error(err) : console.table(result);
+                    db.query(`SELECT * FROM employees`, (err, results) => {
+                        err ? console.error(err) : console.table(results);
                         init();
                     })
                 }
@@ -204,5 +213,3 @@ const updateEmployee = () => {
             )
         })
 }
-
-init();
